@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/veebiteenus.iml" filepath="$PROJECT_DIR$/.idea/modules/veebiteenus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/veebiteenus_main.iml" filepath="$PROJECT_DIR$/.idea/modules/veebiteenus_main.iml" group="veebiteenus" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/veebiteenus_test.iml" filepath="$PROJECT_DIR$/.idea/modules/veebiteenus_test.iml" group="veebiteenus" />
+    </modules>
+  </component>
+</project>

@@ -1,4 +1,4 @@
-package hello;
+package ws;
 
 import io.kristjan.webservice.*;
 import org.springframework.stereotype.Component;

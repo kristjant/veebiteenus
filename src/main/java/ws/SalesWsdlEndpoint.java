@@ -14,8 +14,8 @@ public class SalesWsdlEndpoint extends SalesEndpoint {
   private static final String NAMESPACE_URI = "http://kristjan.io/webService";
 
   @Autowired
-  public SalesWsdlEndpoint(PersonRepository countryRepository) {
-    super(countryRepository);
+  public SalesWsdlEndpoint(PersonRepository personRepository) {
+    super(personRepository);
   }
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addSalesPersonRequest")

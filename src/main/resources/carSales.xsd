@@ -6,7 +6,7 @@
             <xs:sequence>
                 <xs:element name="apiToken" type="xs:string" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="requestId" type="xs:string" minOccurs="1" maxOccurs="1"/>
-                <xs:element name="salesperson" type="tns:salesPerson"/>
+                <xs:element name="salesperson" type="tns:salesPerson" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -44,7 +44,7 @@
             <xs:sequence>
                 <xs:element name="salesPersonId" type="xs:int"/>
                 <xs:element name="requestId" type="xs:string" minOccurs="1" maxOccurs="1"/>
-                <xs:element name="car" type="tns:car"/>
+                <xs:element name="car" type="tns:car" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

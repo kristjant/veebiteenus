@@ -105,6 +105,7 @@
             <xs:element name="salesPersonId" type="xs:int" minOccurs="0" maxOccurs="1"/>
             <xs:element name="make" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="price" type="xs:int" minOccurs="0" maxOccurs="1"/>
             <xs:element name="vin" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="productionYear" type="xs:int" minOccurs="1" maxOccurs="1"/>
             <xs:element name="numberOfDoors" type="tns:numberOfDoors" minOccurs="1" maxOccurs="1"/>

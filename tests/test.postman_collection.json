@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "test",
-		"_postman_id": "5a4b204c-8e62-c549-31a3-392342da6614",
+		"_postman_id": "aeeb060b-c9df-cffb-5b7a-9f245df67d2e",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -15,13 +15,13 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Body is correct\"] = responseBody === '{\"car\":[{\"id\":0,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo ST\",\"vin\":\"testVin\",\"productionYear\":1995,\"numberOfDoors\":3,\"odometer\":12345}]}';"
+							"tests[\"Body is correct\"] = responseBody === '{\"car\":[{\"id\":0,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo ST\",\"price\":null,\"vin\":\"testVin\",\"productionYear\":1995,\"numberOfDoors\":3,\"odometer\":12345}]}';"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/rest/car?apiToken=333&requestId=qwe1&id=0",
+				"url": "http://localhost:8080/rest/car?apiToken=333&requestId=qwe111&id=0",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -40,13 +40,13 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Body is correct\"] = responseBody === '{\"salesperson\":[{\"id\":0,\"name\":\"Juhan Maasikas\",\"employer\":\"Auto 25\",\"phone\":0,\"email\":\"emial@mail.ee\",\"cars\":[{\"id\":0,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo ST\",\"vin\":\"testVin\",\"productionYear\":1995,\"numberOfDoors\":3,\"odometer\":12345},{\"id\":1,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo RS\",\"vin\":\"testVin2\",\"productionYear\":19952,\"numberOfDoors\":2,\"odometer\":123452}]}]}';"
+							"tests[\"Body is correct\"] = responseBody === '{\"salesperson\":[{\"id\":0,\"name\":\"Juhan Maasikas\",\"employer\":\"Auto 25\",\"phone\":0,\"email\":\"emial@mail.ee\",\"cars\":[{\"id\":0,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo ST\",\"price\":null,\"vin\":\"testVin\",\"productionYear\":1995,\"numberOfDoors\":3,\"odometer\":12345},{\"id\":1,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo RS\",\"price\":null,\"vin\":\"testVin2\",\"productionYear\":19952,\"numberOfDoors\":2,\"odometer\":123452}]}]}';"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/rest/salesperson?apiToken=333&requestId=11111111111",
+				"url": "http://localhost:8080/rest/salesperson?apiToken=333&requestId=111",
 				"method": "GET",
 				"header": [],
 				"body": {

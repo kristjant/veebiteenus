@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4f453553-671a-4e1a-8f8f-c79218cd2ede" activeEnvironment="Default" name="carSales" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="fd7232c0-2c64-4f69-95a0-a99f442f5663" wsaVersion="NONE" name="CarSalesPortSoap11" type="wsdl" bindingName="{http://kristjan.io/webService}CarSalesPortSoap11" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/kristjan/Desktop/test/carSales.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\kristjan\Desktop\test\carSales.wsdl"><con:part><con:url>file:\C:\Users\kristjan\Desktop\test\carSales.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://kristjan.io/webService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://kristjan.io/webService">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://kristjan.io/webService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:simpleType name="numberOfDoors">
+        <xs:restriction base="xs:int">
+          <xs:enumeration value="2"/>
+          <xs:enumeration value="3"/>
+          <xs:enumeration value="4"/>
+          <xs:enumeration value="5"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="addSalesPersonRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="salesperson" type="tns:salesPerson"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addSalesPersonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getSalesPersonRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="employer" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getSalesPersonResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="salesperson" type="tns:salesPerson"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addCarRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+            <xs:element name="salesPersonId" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="car" type="tns:car"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addCarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCarRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="make" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="model" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="salesPersonId" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="car" type="tns:car"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="salesPerson">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="employer" type="xs:string"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="phone" type="xs:int"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="email" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="cars" type="tns:car"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="car">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+          <xs:element maxOccurs="1" minOccurs="0" name="salesPersonId" type="xs:int"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="make" type="xs:string"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="model" type="xs:string"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="vin" type="xs:string"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="productionYear" type="xs:int"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="numberOfDoors" type="tns:numberOfDoors"/>
+          <xs:element maxOccurs="1" minOccurs="1" name="odometer" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addCarRequest">
+    <wsdl:part element="tns:addCarRequest" name="addCarRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSalesPersonResponse">
+    <wsdl:part element="tns:addSalesPersonResponse" name="addSalesPersonResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarResponse">
+    <wsdl:part element="tns:getCarResponse" name="getCarResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSalesPersonRequest">
+    <wsdl:part element="tns:addSalesPersonRequest" name="addSalesPersonRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSalesPersonResponse">
+    <wsdl:part element="tns:getSalesPersonResponse" name="getSalesPersonResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCarResponse">
+    <wsdl:part element="tns:addCarResponse" name="addCarResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarRequest">
+    <wsdl:part element="tns:getCarRequest" name="getCarRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSalesPersonRequest">
+    <wsdl:part element="tns:getSalesPersonRequest" name="getSalesPersonRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CarSalesPort">
+    <wsdl:operation name="addCar">
+      <wsdl:input message="tns:addCarRequest" name="addCarRequest"></wsdl:input>
+      <wsdl:output message="tns:addCarResponse" name="addCarResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSalesPerson">
+      <wsdl:input message="tns:addSalesPersonRequest" name="addSalesPersonRequest"></wsdl:input>
+      <wsdl:output message="tns:addSalesPersonResponse" name="addSalesPersonResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCar">
+      <wsdl:input message="tns:getCarRequest" name="getCarRequest"></wsdl:input>
+      <wsdl:output message="tns:getCarResponse" name="getCarResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesPerson">
+      <wsdl:input message="tns:getSalesPersonRequest" name="getSalesPersonRequest"></wsdl:input>
+      <wsdl:output message="tns:getSalesPersonResponse" name="getSalesPersonResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CarSalesPortSoap11" type="tns:CarSalesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addCar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addCarRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSalesPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addSalesPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSalesPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCarRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getSalesPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSalesPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CarSalesPortService">
+    <wsdl:port binding="tns:CarSalesPortSoap11" name="CarSalesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="da1b8616-c9d0-4e73-87e7-8c09a3c23501" isOneWay="false" action="" name="addCar" bindingOperationName="addCar" type="Request-Response" outputName="addCarResponse" inputName="addCarRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e3ec531d-0a14-4a09-80d4-8412f10bb6d8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:addCarRequest>\r
+         <web:apiToken>?</web:apiToken>\r
+         <web:requestId>?</web:requestId>\r
+         <web:salesPersonId>?</web:salesPersonId>\r
+         <web:car>\r
+            <!--Optional:-->\r
+            <web:id>?</web:id>\r
+            <!--Optional:-->\r
+            <web:salesPersonId>?</web:salesPersonId>\r
+            <web:make>?</web:make>\r
+            <web:model>?</web:model>\r
+            <web:vin>?</web:vin>\r
+            <web:productionYear>?</web:productionYear>\r
+            <web:numberOfDoors>?</web:numberOfDoors>\r
+            <web:odometer>?</web:odometer>\r
+         </web:car>\r
+      </web:addCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/addCarRequest"/></con:call><con:call id="06b37980-d8d7-4933-947f-e0c44c8ff718" name="contains"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:addCarRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>zxcasdf</web:requestId>\r
+         <web:salesPersonId>0</web:salesPersonId>\r
+         <web:car>\r
+            <web:make>Kia</web:make>\r
+            <web:model>Rio</web:model>\r
+            <web:vin>123123</web:vin>\r
+            <web:productionYear>222</web:productionYear>\r
+            <web:numberOfDoors>3</web:numberOfDoors>\r
+            <web:odometer>123123123</web:odometer>\r
+         </web:car>\r
+      </web:addCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/addCarRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="22b4cb39-6f2f-4198-8919-6e11ab2ac85c" isOneWay="false" action="" name="addSalesPerson" bindingOperationName="addSalesPerson" type="Request-Response" outputName="addSalesPersonResponse" inputName="addSalesPersonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="67e6fee7-ee18-4bab-9800-329f5c238826" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:addSalesPersonRequest>\r
+         <web:apiToken>?</web:apiToken>\r
+         <web:requestId>?</web:requestId>\r
+         <web:salesperson>\r
+            <!--Optional:-->\r
+            <web:id>?</web:id>\r
+            <web:name>?</web:name>\r
+            <web:employer>?</web:employer>\r
+            <web:phone>?</web:phone>\r
+            <web:email>?</web:email>\r
+            <!--Zero or more repetitions:-->\r
+            <web:cars>\r
+               <!--Optional:-->\r
+               <web:id>?</web:id>\r
+               <!--Optional:-->\r
+               <web:salesPersonId>?</web:salesPersonId>\r
+               <web:make>?</web:make>\r
+               <web:model>?</web:model>\r
+               <web:vin>?</web:vin>\r
+               <web:productionYear>?</web:productionYear>\r
+               <web:numberOfDoors>?</web:numberOfDoors>\r
+               <web:odometer>?</web:odometer>\r
+            </web:cars>\r
+         </web:salesperson>\r
+      </web:addSalesPersonRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/addSalesPersonRequest"/></con:call></con:operation><con:operation id="053bb392-571d-464c-9b6a-3cf07d3257c1" isOneWay="false" action="" name="getCar" bindingOperationName="getCar" type="Request-Response" outputName="getCarResponse" inputName="getCarRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ef96fcd1-8b3c-43d0-baf1-464705e319a5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getCarRequest>\r
+         <web:apiToken>?</web:apiToken>\r
+         <web:requestId>?</web:requestId>\r
+         <!--Optional:-->\r
+         <web:id>?</web:id>\r
+         <!--Optional:-->\r
+         <web:make>?</web:make>\r
+         <!--Optional:-->\r
+         <web:model>?</web:model>\r
+         <!--Optional:-->\r
+         <web:salesPersonId>?</web:salesPersonId>\r
+      </web:getCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/getCarRequest"/></con:call><con:call id="6071fdf8-805f-4643-88d1-8582f2ac4969" name="getCar contains"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getCarRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>qweqwe</web:requestId>\r
+         <!--Optional:-->\r
+         <web:id>0</web:id>\r
+      </web:getCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/getCarRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5845fea1-b045-4a6b-ae92-ed8995033402" isOneWay="false" action="" name="getSalesPerson" bindingOperationName="getSalesPerson" type="Request-Response" outputName="getSalesPersonResponse" inputName="getSalesPersonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="93bd6097-ae06-4e9a-b520-5feffc9ec86f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getSalesPersonRequest>\r
+         <web:apiToken>?</web:apiToken>\r
+         <web:requestId>?</web:requestId>\r
+         <!--Optional:-->\r
+         <web:id>?</web:id>\r
+         <!--Optional:-->\r
+         <web:name>?</web:name>\r
+         <!--Optional:-->\r
+         <web:employer>?</web:employer>\r
+      </web:getSalesPersonRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/getSalesPersonRequest"/></con:call></con:operation></con:interface><con:testSuite id="5ab2baec-e11e-467c-ab9d-f11597eed22e" name="CarSalesSoap TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="25ead242-f90b-4402-ad15-34af14b21307" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="addCar TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="27616328-2612-4add-bdf4-e88648b94516" name="addCar - contains"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CarSalesPortSoap11</con:interface><con:operation>addCar</con:operation><con:request name="addCar - contains" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2dbe612b-6205-4c23-9883-da7c6f193d0f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:addCarRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>123123</web:requestId>\r
+         <web:salesPersonId>0</web:salesPersonId>\r
+         <web:car>\r
+            <web:make>Kia</web:make>\r
+            <web:model>Rio</web:model>\r
+            <web:vin>123123</web:vin>\r
+            <web:productionYear>222</web:productionYear>\r
+            <web:numberOfDoors>3</web:numberOfDoors>\r
+            <web:odometer>123123123</web:odometer>\r
+         </web:car>\r
+      </web:addCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="20e8cbda-8851-4596-8eeb-1e98d6fb7269" name="SOAP Response"/><con:assertion type="Simple Contains" id="71b61a0a-d7a9-4451-a4f0-eeb1bc475184" name="Contains"><con:configuration><token>&lt;/ns2:id>
+</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/addCarRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="942c05da-d97f-43ea-a808-18bd48adc843" name="addCar"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CarSalesPortSoap11</con:interface><con:operation>addCar</con:operation><con:request name="addCar" id="8706b143-e40e-41a9-861f-ce4df8d258d0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:addCarRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>zxcasdf</web:requestId>\r
+         <web:salesPersonId>0</web:salesPersonId>\r
+         <web:car>\r
+            <web:make>Kia</web:make>\r
+            <web:model>Rio</web:model>\r
+            <web:vin>123123</web:vin>\r
+            <web:productionYear>222</web:productionYear>\r
+            <web:numberOfDoors>3</web:numberOfDoors>\r
+            <web:odometer>123123123</web:odometer>\r
+         </web:car>\r
+      </web:addCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Simple Contains" id="a79852fa-dae0-4527-9455-ddf83e41573d" name="Contains"><con:configuration><token/><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains"/><con:assertion type="Schema Compliance" id="0057d2a2-ab80-485f-8be9-037b0296a316" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://kristjan.io/webService/CarSalesPort/addCarRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="130613c6-9d36-4c39-8fb8-587771a4e3fb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCar TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="c2e535fa-0163-4772-b685-7bc0587f4cab" name="getCar"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CarSalesPortSoap11</con:interface><con:operation>getCar</con:operation><con:request name="getCar" id="9fabdd39-6757-4176-a9df-3c955e5e5166"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getCarRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>qweqwe</web:requestId>\r
+         <!--Optional:-->\r
+         <web:id>0</web:id>\r
+      </web:getCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Schema Compliance" id="02a7b2fa-76f6-4139-8224-7362c30cbee4" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://kristjan.io/webService/CarSalesPort/getCarRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="d742c16a-010b-4978-bc56-438be029c112" name="getCar - getCar contains"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CarSalesPortSoap11</con:interface><con:operation>getCar</con:operation><con:request name="getCar - getCar contains" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="06a74d9e-bfb7-405c-9060-153c14d1c3d9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getCarRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>433334</web:requestId>\r
+         <!--Optional:-->\r
+         <web:id>0</web:id>\r
+      </web:getCarRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Simple Contains" id="c0b7a720-2ab7-48cb-9a22-70ad1f4579de" name="Contains 1"><con:configuration><token><![CDATA[         <ns2:car>
+            <ns2:id>0</ns2:id>
+            <ns2:salesPersonId>0</ns2:salesPersonId>
+            <ns2:make>Ford</ns2:make>
+            <ns2:model>Mondeo ST</ns2:model>
+            <ns2:vin>testVin</ns2:vin>
+            <ns2:productionYear>1995</ns2:productionYear>
+            <ns2:numberOfDoors>3</ns2:numberOfDoors>
+            <ns2:odometer>12345</ns2:odometer>
+         </ns2:car>
+]]></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://kristjan.io/webService/CarSalesPort/getCarRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b4e7261e-30c9-4a33-bb18-c4efb4fd54f5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="addSalesPerson TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="3fcdd477-ca9c-4a2b-9517-1a3189414c2b" name="addSalesPerson"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CarSalesPortSoap11</con:interface><con:operation>addSalesPerson</con:operation><con:request name="addSalesPerson" id="f35a562f-0008-4754-ad37-e4fad9220117"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:addSalesPersonRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>dsfsdfsdfsdf</web:requestId>\r
+         <web:salesperson>\r
+            <!--Optional:-->\r
+            <web:id>11</web:id>\r
+            <web:name>?</web:name>\r
+            <web:employer>?</web:employer>\r
+            <web:phone>2222</web:phone>\r
+            <web:email>?</web:email>\r
+            <!--Zero or more repetitions:-->\r
+            <web:cars>\r
+               <web:make>?</web:make>\r
+               <web:model>?</web:model>\r
+               <web:vin>?</web:vin>\r
+               <web:productionYear>333</web:productionYear>\r
+               <web:numberOfDoors>2</web:numberOfDoors>\r
+               <web:odometer>2</web:odometer>\r
+            </web:cars>\r
+         </web:salesperson>\r
+      </web:addSalesPersonRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Schema Compliance" id="2ab9cf0d-74b5-4f7c-ad72-3ed6ec7f6ff4" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:assertion type="Simple Contains" id="ea703d81-72a9-404b-82fa-e1fb7697e32a" name="Contains"><con:configuration><token>&lt;/ns2:id></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://kristjan.io/webService/CarSalesPort/addSalesPersonRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="8703e82f-196f-40fb-a2bd-d9711cc06709" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getSalesPerson TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="8464e288-df1a-4865-86de-2ea89cd088fd" name="getSalesPerson"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CarSalesPortSoap11</con:interface><con:operation>getSalesPerson</con:operation><con:request name="getSalesPerson" id="78cf40d9-b382-4baa-a5d4-1cd172b22184"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://kristjan.io/webService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:getSalesPersonRequest>\r
+         <web:apiToken>333</web:apiToken>\r
+         <web:requestId>12312333123</web:requestId>\r
+         <web:id>0</web:id>\r
+      </web:getSalesPersonRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="Schema Compliance" id="5326cbf5-b2dd-4970-9a1a-8dae6671af28" name="Schema Compliance"><con:configuration><definition/></con:configuration></con:assertion><con:assertion type="Simple Contains" id="86d898d5-448d-4c89-a5f3-aa28998c1024" name="Contains"><con:configuration><token><![CDATA[  <ns2:salesperson>
+            <ns2:id>0</ns2:id>
+            <ns2:name>Juhan Maasikas</ns2:name>
+            <ns2:employer>Auto 25</ns2:employer>
+            <ns2:phone>0</ns2:phone>
+            <ns2:email>emial@mail.ee</ns2:email>
+            <ns2:cars>
+               <ns2:id>0</ns2:id>
+               <ns2:salesPersonId>0</ns2:salesPersonId>
+               <ns2:make>Ford</ns2:make>
+               <ns2:model>Mondeo ST</ns2:model>
+               <ns2:vin>testVin</ns2:vin>
+               <ns2:productionYear>1995</ns2:productionYear>
+               <ns2:numberOfDoors>3</ns2:numberOfDoors>
+               <ns2:odometer>12345</ns2:odometer>
+            </ns2:cars>
+            <ns2:cars>
+               <ns2:id>1</ns2:id>
+               <ns2:salesPersonId>0</ns2:salesPersonId>
+               <ns2:make>Ford</ns2:make>
+               <ns2:model>Mondeo RS</ns2:model>
+               <ns2:vin>testVin2</ns2:vin>
+               <ns2:productionYear>19952</ns2:productionYear>
+               <ns2:numberOfDoors>2</ns2:numberOfDoors>
+               <ns2:odometer>123452</ns2:odometer>
+            </ns2:cars>
+            <ns2:cars>
+               <ns2:id>2</ns2:id>
+               <ns2:salesPersonId>0</ns2:salesPersonId>
+               <ns2:make>asd</ns2:make>
+               <ns2:model>fasdasd</ns2:model>
+               <ns2:vin>asdasd</ns2:vin>
+               <ns2:productionYear>33</ns2:productionYear>
+               <ns2:numberOfDoors>5</ns2:numberOfDoors>
+               <ns2:odometer>123</ns2:odometer>
+            </ns2:cars>
+            <ns2:cars>
+               <ns2:id>3</ns2:id>
+               <ns2:salesPersonId>0</ns2:salesPersonId>
+               <ns2:make>string</ns2:make>
+               <ns2:model>string</ns2:model>
+               <ns2:vin>string</ns2:vin>
+               <ns2:productionYear>0</ns2:productionYear>
+               <ns2:numberOfDoors>2</ns2:numberOfDoors>
+               <ns2:odometer>0</ns2:odometer>
+            </ns2:cars>
+            <ns2:cars>
+               <ns2:id>4</ns2:id>
+               <ns2:salesPersonId>0</ns2:salesPersonId>
+               <ns2:make>Kia</ns2:make>
+               <ns2:model>Rio</ns2:model>
+               <ns2:vin>123123</ns2:vin>
+               <ns2:productionYear>222</ns2:productionYear>
+               <ns2:numberOfDoors>3</ns2:numberOfDoors>
+               <ns2:odometer>123123123</ns2:odometer>
+            </ns2:cars>
+            <ns2:cars>
+               <ns2:id>5</ns2:id>
+               <ns2:salesPersonId>0</ns2:salesPersonId>
+               <ns2:make>Kia</ns2:make>
+               <ns2:model>Rio</ns2:model>
+               <ns2:vin>123123</ns2:vin>
+               <ns2:productionYear>222</ns2:productionYear>
+               <ns2:numberOfDoors>3</ns2:numberOfDoors>
+               <ns2:odometer>123123123</ns2:odometer>
+            </ns2:cars>
+         </ns2:salesperson>
+]]></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://kristjan.io/webService/CarSalesPort/getSalesPersonRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

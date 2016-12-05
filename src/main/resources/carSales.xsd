@@ -1,6 +1,15 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://kristjan.io/webService"
            targetNamespace="http://kristjan.io/webService" elementFormDefault="qualified">
 
+    <xs:simpleType name="numberOfDoors">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:element name="addSalesPersonRequest">
         <xs:complexType>
             <xs:sequence>
@@ -42,8 +51,9 @@
     <xs:element name="addCarRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="salesPersonId" type="xs:int"/>
+                <xs:element name="apiToken" type="xs:string" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="requestId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="salesPersonId" type="xs:int"/>
                 <xs:element name="car" type="tns:car" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -92,11 +102,12 @@
     <xs:complexType name="car">
         <xs:sequence>
             <xs:element name="id" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="salesPersonId" type="xs:int" minOccurs="0" maxOccurs="1"/>
             <xs:element name="make" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="model" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="vin" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="productionYear" type="xs:int" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="numberOfDoors" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="numberOfDoors" type="tns:numberOfDoors" minOccurs="1" maxOccurs="1"/>
             <xs:element name="odometer" type="xs:int" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>

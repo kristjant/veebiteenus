@@ -7,6 +7,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.ws.soap.SoapBodyException;
 
 
 @Endpoint
@@ -16,6 +17,11 @@ public class SalesWsdlEndpoint extends SalesEndpoint {
   @Autowired
   public SalesWsdlEndpoint(PersonRepository personRepository) {
     super(personRepository);
+  }
+
+  @Override
+  protected void throwDuplicateException() {
+    throw new SoapBodyException("Duplicate request!");
   }
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addSalesPersonRequest")
@@ -29,6 +35,7 @@ public class SalesWsdlEndpoint extends SalesEndpoint {
   public GetSalesPersonResponse getSalesPersonResponse(@RequestPayload GetSalesPersonRequest request) {
     return super.getSalesPersonResponse(request);
   }
+
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addCarRequest")
   @ResponsePayload

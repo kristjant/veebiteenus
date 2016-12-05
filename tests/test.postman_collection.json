@@ -1,0 +1,123 @@
+{
+	"variables": [],
+	"info": {
+		"name": "test",
+		"_postman_id": "5a4b204c-8e62-c549-31a3-392342da6614",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/rest/car?apiToken=333&requestId=qwe1&id=0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Body is correct\"] = responseBody === '{\"car\":[{\"id\":0,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo ST\",\"vin\":\"testVin\",\"productionYear\":1995,\"numberOfDoors\":3,\"odometer\":12345}]}';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/rest/car?apiToken=333&requestId=qwe1&id=0",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rest/salesperson?apiToken=333&requestId=11111111111",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Body is correct\"] = responseBody === '{\"salesperson\":[{\"id\":0,\"name\":\"Juhan Maasikas\",\"employer\":\"Auto 25\",\"phone\":0,\"email\":\"emial@mail.ee\",\"cars\":[{\"id\":0,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo ST\",\"vin\":\"testVin\",\"productionYear\":1995,\"numberOfDoors\":3,\"odometer\":12345},{\"id\":1,\"salesPersonId\":0,\"make\":\"Ford\",\"model\":\"Mondeo RS\",\"vin\":\"testVin2\",\"productionYear\":19952,\"numberOfDoors\":2,\"odometer\":123452}]}]}';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/rest/salesperson?apiToken=333&requestId=11111111111",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rest/car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/rest/car",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"apiToken\": \"333\",\r\n  \"car\": {\r\n    \"id\": 0,\r\n    \"make\": \"string\",\r\n    \"model\": \"string\",\r\n    \"numberOfDoors\": 2,\r\n    \"odometer\": 0,\r\n    \"productionYear\": 0,\r\n    \"salesPersonId\": 0,\r\n    \"vin\": \"string\"\r\n  },\r\n  \"requestId\": \"ffffffffff1\",\r\n  \"salesPersonId\": 0\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rest/salesperson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/rest/salesperson",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"apiToken\": \"333\",\r\n  \"requestId\": \"jjjjjjjjjjjjjjjjjjj\",\r\n  \"salesperson\": {\r\n    \"cars\": [\r\n      {\r\n        \"id\": 0,\r\n        \"make\": \"string\",\r\n        \"model\": \"string\",\r\n        \"numberOfDoors\": 0,\r\n        \"odometer\": 0,\r\n        \"productionYear\": 0,\r\n        \"salesPersonId\": 0,\r\n        \"vin\": \"string\"\r\n      }\r\n    ],\r\n    \"email\": \"string\",\r\n    \"employer\": \"string\",\r\n    \"id\": 0,\r\n    \"name\": \"string\",\r\n    \"phone\": 0\r\n  }\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

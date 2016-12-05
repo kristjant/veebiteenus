@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://kristjan.io/webService"
+                  targetNamespace="http://kristjan.io/webService">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://kristjan.io/webService">
+
+    <xs:simpleType name="numberOfDoors">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="addSalesPersonRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="salesperson" type="tns:salesPerson"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addSalesPersonResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getSalesPersonRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="employer" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getSalesPersonResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="salesperson" type="tns:salesPerson"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCarRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+                <xs:element name="salesPersonId" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="car" type="tns:car"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCarRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="apiToken" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="1" name="requestId" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="make" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="model" type="xs:string"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="salesPersonId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="car" type="tns:car"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="salesPerson">
+        <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="employer" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="phone" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="email" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="cars" type="tns:car"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="car">
+        <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="0" name="id" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="salesPersonId" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="make" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="model" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="price" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="vin" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="productionYear" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="numberOfDoors" type="tns:numberOfDoors"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="odometer" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addCarRequest">
+    <wsdl:part element="tns:addCarRequest" name="addCarRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSalesPersonResponse">
+    <wsdl:part element="tns:addSalesPersonResponse" name="addSalesPersonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarResponse">
+    <wsdl:part element="tns:getCarResponse" name="getCarResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSalesPersonRequest">
+    <wsdl:part element="tns:addSalesPersonRequest" name="addSalesPersonRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSalesPersonResponse">
+    <wsdl:part element="tns:getSalesPersonResponse" name="getSalesPersonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCarResponse">
+    <wsdl:part element="tns:addCarResponse" name="addCarResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarRequest">
+    <wsdl:part element="tns:getCarRequest" name="getCarRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSalesPersonRequest">
+    <wsdl:part element="tns:getSalesPersonRequest" name="getSalesPersonRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CarSalesPort">
+    <wsdl:operation name="addCar">
+      <wsdl:input message="tns:addCarRequest" name="addCarRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addCarResponse" name="addCarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSalesPerson">
+      <wsdl:input message="tns:addSalesPersonRequest" name="addSalesPersonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:addSalesPersonResponse" name="addSalesPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCar">
+      <wsdl:input message="tns:getCarRequest" name="getCarRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCarResponse" name="getCarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesPerson">
+      <wsdl:input message="tns:getSalesPersonRequest" name="getSalesPersonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getSalesPersonResponse" name="getSalesPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CarSalesPortSoap11" type="tns:CarSalesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addCar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addCarRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSalesPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addSalesPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSalesPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCarRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getSalesPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSalesPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CarSalesPortService">
+    <wsdl:port binding="tns:CarSalesPortSoap11" name="CarSalesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
